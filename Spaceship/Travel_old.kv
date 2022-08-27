@@ -1,0 +1,163 @@
+CanvasExample3:
+
+#:set s dp(150)
+
+<CanvasExample1>:
+    canvas:
+        Rectangle:
+            size: s, s
+            pos: self.center_x-s/2, self.center_y-s/2
+        Ellipse:
+            size: s, s/2
+            pos: 400, 100
+        Line:
+            points: (0, 0, self.width/4, 100, self.width*2, 0, self.width, 100)
+            width: 2
+
+
+<CanvasExample2>:
+    canvas:
+        Line:
+            points: (0, self.height/2, self.width, self.height/2)
+        Line:
+            points: (self.width/2, 0, self.width/2, self.height)
+
+
+<CanvasExample2>:
+    canvas:
+        Line:
+            circle: (200, 200, 100)
+        Color:
+            rgb: 1, 0, 0 
+        Line:
+            ellipse: (500, 300, 100, 200)
+        Line:
+            rectangle: (800,100, 300, 200)
+
+<CanvasExample3>:
+    Button:
+        pos: 100, 400
+        text: "Click me"
+        on_press: root.on_click()
+
+
+<ImageExample@GridLayout>:
+    cols: 3
+    Image:
+        source: "images/cake.jpg"
+    Image:
+        source: "images/cake.jpg"
+        allow_stretch: True
+    Image:
+        source: "images/cake.jpg"
+        keep_ratio: False
+
+
+<WidgetsExample>:
+    cols: 3
+    ToggleButton:
+        text: "Toggle"
+        on_state: root.on_toggle_state(self)
+        size_hint: None, 1
+        width: "100dp"
+    Button:
+        text: "click here"
+        on_press: root.on_button_click()
+        disabled: root.countb
+    Label:
+        text: root.my_text
+        font_name: "fonts/Lcd.ttf"
+        font_size: "80dp"
+        color: 1, 0, 0, 1
+    Switch:
+        id: my_switch
+        on_active: root.on_switch_active(self)
+        size_hint: None, 1
+        width: "100dp"
+        active: True
+    Slider:
+        id: my_slider
+        min: 0
+        max: 100
+        # on_value: root.on_slider_value(self)
+        value: 50
+        orientation: "vertical"
+        disabled: not my_switch.active
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: str(int(my_slider.value))
+            font_name: "fonts/Lcd.ttf"
+            font_size: "80dp"
+            color: 1, 0, 0, 1
+        ProgressBar:
+            max: 100
+            value: my_slider.value
+    TextInput:
+        id: my_input
+        text: root.text_input_str
+        size_hint: None, 1
+        width: "100dp"
+        multiline: False
+        on_text_validate: root.on_text_validate(self)
+    Label:
+        text: "my name is: " + root.text_input_str
+        
+
+
+<PageLayoutExample@PageLayout>:
+    MainWidget:
+    BoxLayoutExampe:
+
+
+<ScrollViewExample@ScrollView>
+    StackLayoutExample:
+        size_hint: 1, None
+        height: self.minimum_height
+
+<AnchorLayoutExample>:
+    anchor_x: "right"
+    #anchor_y: 
+    Button:
+        text: "A"
+        size_hint: .1, .1
+
+
+
+
+
+
+
+<BoxLayoutExampe>:
+    orientation: "vertical"
+    Button:
+        text: "A"
+        # size: "40dp", "12dp"
+        size_hint: 0.5, None
+        widt: "40dp"
+        # x, center_x, right
+        pos_hint: {"center_x": 1}
+    Button:
+        text: "B"
+        size_hint: 1, 2
+    Button:
+        text: "C"
+    
+    BoxLayout:
+        spacing: "100dp"
+        Button:
+            text: "test"
+        Button:
+            text: "Check"
+
+<MainWidget>:
+    Button:
+        text: "Hallo"
+        size: "40dp", "40dp"
+        pos: "100dp", "200dp"
+        color: 0, 0, 1, 1
+    Label:
+        text: "Hallo"
+        size: "40dp", "40dp"
+        pos: "200dp", "200dp"
+        color: .5, .3, .2, 1
